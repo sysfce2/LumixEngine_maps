@@ -2961,8 +2961,7 @@ struct MapsPlugin final : public StudioApp::GUIPlugin
 
 
 		void saveToCache() {
-			FileSystem& fs = app->getWorldEditor().getEngine().getFileSystem();
-			const StaticString<MAX_PATH> dir(fs.getBasePath(), ".lumix/maps_cache");
+			const StaticString<MAX_PATH> dir(app->getProjectDir(), ".lumix/maps_cache");
 			if (!os::makePath(dir)) logError("Could not create", dir);
 
 			const StaticString<MAX_PATH> path(dir, "/", is_heightmap ? "hm" : "im", tile.loc.z, "_", tile.loc.x, "_", tile.loc.y);
